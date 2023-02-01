@@ -23,6 +23,9 @@ class ItemTests(APITestCase):
         )
         test_item.save()
 
+    def setUp(self):
+        self.client.login(username="testuser1", password="pass")
+
     def test_item_model(self):
         item = Item.objects.get(id=1)
         actual_creator = str(item.creator)
